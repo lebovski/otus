@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+check: hw2build
+
 # hw_2 runners
 hw2build:
 	cmake3 -S ./hw_2 -B ./hw_2/build && \

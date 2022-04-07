@@ -4,8 +4,8 @@ check: hw2build
 
 # hw_2 runners
 hw2build:
-	cmake3 -S ./hw_2 -B ./hw_2/build && \
-	cmake3 --build ./hw_2/build && \
+	cmake -S ./hw_2 -B ./hw_2/build && \
+	cmake --build ./hw_2/build && \
 	./hw_2/build/hello_world
 
 hw2analyze:

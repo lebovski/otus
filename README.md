@@ -1,2 +1,2 @@
-# outus
-Outus home work
+# otus
+Otus home work

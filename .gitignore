@@ -1,3 +1,4 @@
 # Build dirs
 *build
 high_scores.txt
+compile_commands.json

@@ -63,7 +63,8 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "bitset": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "cinttypes": "cpp"
     },
     "cmake.configureOnOpen": false
 }

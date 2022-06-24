@@ -1,33 +1,42 @@
 #include <iostream>
 #include "sequence.cpp"
 #include "linked.cpp"
+#include "interface.h"
 
 int main()
 {
-    std::cout << "Sequence" << std::endl;
+    IContainer<int> *containers[2];
 
-    Linked<int> seq;
+    containers[0] = new Linked<int>{};
+    containers[1] = new Sequence<int>{};
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 2; i++)
     {
-        seq.push_back(i);
+        IContainer<int> *seq = containers[i];
+
+        std::cout << seq->name() << std::endl;
+
+        for (int i = 0; i < 10; i++)
+        {
+            seq->push_back(i);
+        }
+
+        seq->print();
+
+        std::cout << seq->size() << std::endl;
+
+        seq->erase(3);
+        seq->erase(4);
+        seq->erase(5);
+        seq->print();
+
+        seq->insert(0, 10);
+        seq->print();
+
+        seq->insert(seq->size() / 2, 20);
+        seq->print();
+
+        seq->insert(seq->size(), 30);
+        seq->print();
     }
-
-    seq.print();
-
-    std::cout << seq.size() << std::endl;
-
-    seq.erase(3);
-    seq.erase(4);
-    seq.erase(5);
-    seq.print();
-
-    seq.insert(0, 10);
-    seq.print();
-
-    // seq.insert(seq.size()/2, 20);
-    // seq.print();
-
-    // seq.insert(seq.size(), 30);
-    // seq.print();
 }

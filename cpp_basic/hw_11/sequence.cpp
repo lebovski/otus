@@ -78,6 +78,8 @@ public:
         std::cout << std::endl;
     }
 
+    std::string name() { return "sequence"; }
+
 private:
     T *m_region;
     int m_size;

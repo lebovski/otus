@@ -24,7 +24,7 @@ public:
         {
             m_last->next = new_node;
         }
-        
+
         new_node->prev = m_last;
         new_node->next = nullptr;
         new_node->data = value;
@@ -35,6 +35,24 @@ public:
 
     void insert(int position, T value) override
     {
+        if (position == 0)
+        {
+            Node<T> *f = first();
+            Node<T> *new_node = new Node<T>{};
+            new_node->data = value;
+            new_node->prev = nullptr;
+            new_node->next = f;
+            f->prev = new_node;
+            m_size += 1;
+            return;
+        }
+
+        if (position == m_size)
+        {
+            push_back(value);
+            return;
+        }
+
         Node<T> *node = m_last;
         for (int i = 0; i < m_size - position; i++)
         {
@@ -48,6 +66,7 @@ public:
         new_node->data = value;
         new_node->prev = prev;
         new_node->next = next;
+
         prev->next = new_node;
         next->prev = new_node;
 
@@ -89,7 +108,7 @@ public:
 
     void print() override
     {
-        Node<T> *node = m_last;
+        Node<T> *node = first();
         for (int i = 0; i < m_size; i++)
         {
             std::cout << node->data;
@@ -98,10 +117,23 @@ public:
                 std::cout << ", ";
             }
 
-            node = node->prev;
+            node = node->next;
         }
         std::cout << std::endl;
     }
+
+    Node<T> *first()
+    {
+        Node<T> *node = m_last;
+        for (int i = 0; i < m_size - 1; i++)
+        {
+            node = node->prev;
+        }
+
+        return node;
+    }
+
+    std::string name() { return "linked"; }
 
 private:
     Node<T> *m_first;

@@ -4,7 +4,6 @@
 
 int main()
 {
-
 	const size_t statistics_count = 4;
 	IStatistics *statistics[statistics_count];
 

@@ -16,3 +16,11 @@ hw2analyze:
 		-DCMAKE_C_COMPILER=/usr/bin/clang \
 		-DCMAKE_CXX_COMPILER=/usr/bin/clang++ && \
 	intercept-build make VERBOSE=1
+
+lect3build:
+	cmake -S ./lect_3 -B ./lect_3/build && \
+	cmake --build ./lect_3/build
+
+lect4build:
+	cmake -S ./lect_4 -B ./lect_4/build && \
+	cmake --build ./lect_4/build

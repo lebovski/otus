@@ -24,7 +24,7 @@ int check_value()
 		}
 		else
 		{
-			std::cout << "you win!" << "attempts = " << score << std::endl;
+			std::cout << "you win!" << " attempts = " << score << std::endl;
 			break;
 		}
 

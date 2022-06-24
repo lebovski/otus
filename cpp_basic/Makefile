@@ -32,6 +32,12 @@ hw9build:
 	cmake -S ./hw_9 -B ./hw_9/build && \
 	cmake --build ./hw_9/build
 
+# hw_11 runners
+hw11build:
+	cmake -S ./hw_11 -B ./hw_11/build && \
+	cmake --build ./hw_11/build && \
+	./hw_11/build/container
+
 lect3build:
 	cmake -S ./lect_3 -B ./lect_3/build && \
 	cmake --build ./lect_3/build

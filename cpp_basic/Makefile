@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-check: hw2build
+check: hw2build hw5build
 
 # hw_2 runners
 hw2build:
@@ -20,8 +20,7 @@ hw2analyze:
 # hw_5 runners
 hw5build:
 	cmake -S ./hw_5 -B ./hw_5/build && \
-	cmake --build ./hw_5/build && \
-	./hw_5/build/game
+	cmake --build ./hw_5/build
 
 hw5analyze:
 	intercept-build cmake \

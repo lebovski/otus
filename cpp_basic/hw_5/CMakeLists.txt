@@ -1,23 +1,20 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.22)
 
 project(03.homework)
 
-add_executable(
-	check_value
+add_executable(game
+	main.cpp
 	check_value.cpp
-)
-
-add_executable(
-	random_value
-	random_value.cpp
-)
-
-add_executable(
-	high_scores
 	high_scores.cpp
+	argument.cpp
+	random_value.cpp
+	random_value.h
+	check_value.h
+	high_scores.h
+	argument.h
 )
 
-add_executable(
-	argument
-	argument.cpp
+set_target_properties(game PROPERTIES
+    CXX_STANDARD 17
+    CXX_STANDARD_REQUIRED ON
 )

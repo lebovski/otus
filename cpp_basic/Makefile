@@ -17,6 +17,21 @@ hw2analyze:
 		-DCMAKE_CXX_COMPILER=/usr/bin/clang++ && \
 	intercept-build make VERBOSE=1
 
+# hw_5 runners
+hw5build:
+	cmake -S ./hw_5 -B ./hw_5/build && \
+	cmake --build ./hw_5/build && \
+	./hw_5/build/game
+
+hw5analyze:
+	intercept-build cmake \
+		-S ./hw_5 \
+		-B ./hw_5/build \
+		-DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+		-DCMAKE_C_COMPILER=/usr/bin/clang \
+		-DCMAKE_CXX_COMPILER=/usr/bin/clang++ && \
+	intercept-build make VERBOSE=1
+
 lect3build:
 	cmake -S ./lect_3 -B ./lect_3/build && \
 	cmake --build ./lect_3/build

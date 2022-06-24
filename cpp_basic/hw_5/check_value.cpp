@@ -1,8 +1,9 @@
 #include <iostream>
+#include "random_value.h"
 
 int check_value()
 {
-	const int target_value = 54;
+	const int target_value = random_value();
 	int current_value = 0;
 	int score = 0; // same as user try count
 	bool not_win = true;

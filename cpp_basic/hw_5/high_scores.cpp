@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-int main() {
+int score() {
 	const std::string high_scores_filename = "high_scores.txt";
 
 	// Ask about name

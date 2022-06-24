@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-int main(int argc, char **argv)
+int parce_args(int argc, char **argv)
 {
 	// argc - it is a count of arguments
 	// But there is some detail - OS always pass one system argument - the name of the executable

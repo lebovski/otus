@@ -3,7 +3,6 @@
 #include <string>
 
 int main() {
-
 	const std::string high_scores_filename = "high_scores.txt";
 
 	// Ask about name

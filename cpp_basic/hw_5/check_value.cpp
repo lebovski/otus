@@ -1,10 +1,10 @@
 #include <iostream>
 
-int main()
+int check_value()
 {
-
 	const int target_value = 54;
 	int current_value = 0;
+	int score = 0; // same as user try count
 	bool not_win = true;
 
 	std::cout << "Enter your guess:" << std::endl;
@@ -27,7 +27,8 @@ int main()
 			break;
 		}
 
+		score++;
 	} while (true);
 
-	return 0;
+	return score;
 }

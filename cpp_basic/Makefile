@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-check: hw2build hw5build hw8build
+check: hw2build hw5build hw8build hw9build
 
 # hw_2 runners
 hw2build:
@@ -26,6 +26,11 @@ hw5build:
 hw8build:
 	cmake -S ./hw_8 -B ./hw_8/build && \
 	cmake --build ./hw_8/build
+
+# hw_9 runners
+hw9build:
+	cmake -S ./hw_9 -B ./hw_9/build && \
+	cmake --build ./hw_9/build
 
 lect3build:
 	cmake -S ./lect_3 -B ./lect_3/build && \

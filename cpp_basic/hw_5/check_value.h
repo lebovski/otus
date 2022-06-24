@@ -1,3 +1,3 @@
 #pragma once
 
-int check_value();
+int check_value(int max);

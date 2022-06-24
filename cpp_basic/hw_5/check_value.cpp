@@ -1,9 +1,9 @@
 #include <iostream>
 #include "random_value.h"
 
-int check_value()
+int check_value(int max)
 {
-	const int target_value = random_value();
+	const int target_value = random_value(max);
 	int current_value = 0;
 	int score = 0; // same as user try count
 	bool not_win = true;
@@ -24,7 +24,8 @@ int check_value()
 		}
 		else
 		{
-			std::cout << "you win!" << " attempts = " << score << std::endl;
+			std::cout << "you win!"
+					  << " attempts = " << score << std::endl;
 			break;
 		}
 

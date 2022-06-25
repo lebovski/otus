@@ -3,6 +3,20 @@
 #include "linked.cpp"
 #include "interface.h"
 
+void print_all(IContainer<int> *seq)
+{
+    for (int i = 0; i < seq->size(); i++)
+    {
+        std::cout << (*seq)[i];
+            if (i != seq->size() - 1)
+            {
+                std::cout << ", ";
+            }
+    }
+
+    std::cout << std::endl;
+}
+
 int main()
 {
     IContainer<int> *containers[2];
@@ -21,22 +35,23 @@ int main()
             seq->push_back(i);
         }
 
-        seq->print();
+        print_all(seq);
+        // seq->print();
 
         std::cout << seq->size() << std::endl;
 
         seq->erase(3);
         seq->erase(4);
         seq->erase(5);
-        seq->print();
+        print_all(seq);
 
         seq->insert(0, 10);
-        seq->print();
+        print_all(seq);
 
         seq->insert(seq->size() / 2, 20);
-        seq->print();
+        print_all(seq);
 
         seq->insert(seq->size(), 30);
-        seq->print();
+        print_all(seq);
     }
 }

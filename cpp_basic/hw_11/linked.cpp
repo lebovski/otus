@@ -21,9 +21,7 @@ public:
         Node<T> *new_node = new Node<T>{};
 
         if (m_last != nullptr)
-        {
             m_last->next = new_node;
-        }
 
         new_node->prev = m_last;
         new_node->next = nullptr;
@@ -37,28 +35,27 @@ public:
     {
         if (position == 0)
         {
-            Node<T> *f = first();
+            Node<T> *f = get(1);
             Node<T> *new_node = new Node<T>{};
+
             new_node->data = value;
             new_node->prev = nullptr;
             new_node->next = f;
+
             f->prev = new_node;
             m_size += 1;
+
             return;
         }
 
         if (position == m_size)
         {
             push_back(value);
+
             return;
         }
 
-        Node<T> *node = m_last;
-        for (int i = 0; i < m_size - position; i++)
-        {
-            node = node->prev;
-        }
-
+        Node<T> *node = get(position);
         Node<T> *prev = node;
         Node<T> *next = node->next;
 
@@ -75,12 +72,7 @@ public:
 
     void erase(int position) override
     {
-        Node<T> *node = m_last;
-        for (int i = 0; i < m_size - position; i++)
-        {
-            node = node->prev;
-        }
-
+        Node<T> *node = get(position);
         Node<T> *prev = node->prev;
         Node<T> *next = node->next;
 
@@ -90,48 +82,9 @@ public:
         m_size -= 1;
     }
 
-    int size() override
-    {
-        return m_size;
-    }
+    int size() override { return m_size; }
 
-    T operator[](int index) override
-    {
-        Node<T> *node = m_last;
-        for (int i = 0; i < index; i++)
-        {
-            node = node->prev;
-        }
-
-        return node->data;
-    }
-
-    void print() override
-    {
-        Node<T> *node = first();
-        for (int i = 0; i < m_size; i++)
-        {
-            std::cout << node->data;
-            if (i != m_size - 1)
-            {
-                std::cout << ", ";
-            }
-
-            node = node->next;
-        }
-        std::cout << std::endl;
-    }
-
-    Node<T> *first()
-    {
-        Node<T> *node = m_last;
-        for (int i = 0; i < m_size - 1; i++)
-        {
-            node = node->prev;
-        }
-
-        return node;
-    }
+    T operator[](int index) override { return get(index + 1)->data; }
 
     std::string name() { return "linked"; }
 
@@ -139,4 +92,15 @@ private:
     Node<T> *m_first;
     Node<T> *m_last;
     int m_size;
+
+    Node<T> *get(int index)
+    {
+        Node<T> *node = m_last;
+        for (int i = 0; i < m_size - index; i++)
+        {
+            node = node->prev;
+        }
+
+        return node;
+    }
 };

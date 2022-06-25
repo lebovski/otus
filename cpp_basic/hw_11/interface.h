@@ -13,6 +13,5 @@ public:
     virtual void erase(int position) = 0;
     virtual int size() = 0;
     virtual T operator[](int index) = 0;
-    virtual void print() = 0;
     virtual std::string name() = 0;
 };

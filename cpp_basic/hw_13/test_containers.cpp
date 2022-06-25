@@ -127,13 +127,14 @@ TEST(List, RemoveCenter)
 
 TEST(List, GetVal)
 {
-    // run_test([](IContainer<int> *list) {});
+    run_test([](IContainer<int> *list)
+             {
+
     const size_t val = 1;
-    Linked<size_t> list;
 
-    list.push_back(val);
+    list->push_back(val);
 
-    ASSERT_EQ(list[0], val);
+    ASSERT_EQ((*list)[0], val); });
 }
 
 int main(int argc, char **argv)

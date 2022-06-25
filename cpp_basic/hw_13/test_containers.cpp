@@ -55,41 +55,39 @@ TEST(List, AddStart)
 
 TEST(List, AddCenter)
 {
-    // run_test([](IContainer<int> *list) {});
-    // Arrange
+    run_test([](IContainer<int> *list)
+             {
     const size_t count = 3;
-    Linked<size_t> list;
 
-    list.push_back(1);
-    list.push_back(2);
-    list.insert(list.size() / 2, 1234);
+    list->push_back(1);
+    list->push_back(2);
+    list->insert(list->size() / 2, 1234);
 
     // Assert
-    ASSERT_EQ(list.size(), count);
-    ASSERT_FALSE(list.empty());
+    ASSERT_EQ(list->size(), count);
+    ASSERT_FALSE(list->empty()); });
 }
 
 TEST(List, PopBack)
 {
-    // run_test([](IContainer<int> *list) {});
-    // Arrange
+    run_test([](IContainer<int> *list)
+             {
     const size_t count = 10;
-    Linked<size_t> list;
 
     for (size_t i = 0; i < count; ++i)
     {
-        list.push_back(i);
+        list->push_back(i);
     }
 
     // Act
     for (size_t i = 0; i < count; ++i)
     {
-        list.pop_back();
+        list->pop_back();
     }
 
     // Assert
-    ASSERT_EQ(list.size(), 0);
-    ASSERT_TRUE(list.empty());
+    ASSERT_EQ(list->size(), 0);
+    ASSERT_TRUE(list->empty()); });
 }
 
 TEST(List, PopStart)

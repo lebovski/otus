@@ -53,6 +53,9 @@ public:
         m_region = new_region;
 
         m_size -= 1;
+        if (m_size == 0) {
+            m_region = nullptr;
+        }
     }
 
     void pop_back() { erase(m_size); }

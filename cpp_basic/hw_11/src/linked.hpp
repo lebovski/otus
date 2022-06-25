@@ -73,13 +73,27 @@ public:
     void erase(int position) override
     {
         Node<T> *node = get(position);
+        if (node == nullptr)
+        {
+            return;
+        }
+
         Node<T> *prev = node->prev;
         Node<T> *next = node->next;
 
-        prev->next = next;
-        next->prev = prev;
+        if (prev != nullptr)
+        {
+            prev->next = next;
+        }
+        if (next != nullptr)
+        {
+            next->prev = prev;
+        }
 
         m_size -= 1;
+        if (m_size == 0) {
+            m_last = nullptr;
+        }
     }
 
     void pop_back() { erase(m_size); }

@@ -6,7 +6,7 @@ template <class T>
 class Sequence : public IContainer<T>
 {
 public:
-    Sequence() : m_size{0}, m_region{nullptr} {}
+    Sequence() : m_region{nullptr}, m_size{0} {}
 
     void push_back(T value) override { insert(m_size, value); }
 
@@ -14,7 +14,7 @@ public:
     {
         T *new_region = new T[m_size + 1];
         int shift = 0;
-        for (size_t i = 0; i < m_size + 1; ++i)
+        for (int i = 0; i < m_size + 1; ++i)
         {
             if (i == position)
             {
@@ -39,7 +39,6 @@ public:
         int shift = 0;
         for (int i = 0; i < m_size; ++i)
         {
-            bool res = i == position;
             if (i == position - 1)
             {
                 shift = 1;

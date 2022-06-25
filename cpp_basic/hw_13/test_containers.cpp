@@ -4,37 +4,47 @@
 
 #include <gtest/gtest.h>
 
+void run_test(void (*body)(IContainer<int> *list))
+{
+    IContainer<int> *containers[2];
+
+    containers[0] = new Linked<int>{};
+    containers[1] = new Sequence<int>{};
+
+    for (int i = 0; i < 2; i++)
+    {
+        body(containers[i]);
+    }
+}
+
 TEST(List, Empty)
 {
-    // Arrange
-    Linked<int> list;
-
-    // Act (empty for this test)
-
-    // Assert
-    ASSERT_EQ(list.size(), 0);
-    ASSERT_TRUE(list.empty());
+    run_test([](IContainer<int> *list)
+             {
+        ASSERT_EQ(list->size(), 0);
+        ASSERT_TRUE(list->empty()); });
 }
 
 TEST(List, PushBack)
 {
-    // Arrange
+    run_test([](IContainer<int> *list)
+             {
     const size_t count = 10;
-    Linked<size_t> list;
 
     // Act
     for (size_t i = 0; i < count; ++i)
     {
-        list.push_back(i);
+        list->push_back(i);
     }
 
     // Assert
-    ASSERT_EQ(list.size(), count);
-    ASSERT_FALSE(list.empty());
+    ASSERT_EQ(list->size(), count);
+    ASSERT_FALSE(list->empty()); });
 }
 
 TEST(List, AddStart)
 {
+    // run_test([](IContainer<int> *list) {});
     // Arrange
     const size_t count = 2;
     Linked<size_t> list;
@@ -49,6 +59,7 @@ TEST(List, AddStart)
 
 TEST(List, AddCenter)
 {
+    // run_test([](IContainer<int> *list) {});
     // Arrange
     const size_t count = 3;
     Linked<size_t> list;
@@ -64,6 +75,7 @@ TEST(List, AddCenter)
 
 TEST(List, PopBack)
 {
+    // run_test([](IContainer<int> *list) {});
     // Arrange
     const size_t count = 10;
     Linked<size_t> list;
@@ -84,45 +96,58 @@ TEST(List, PopBack)
     ASSERT_TRUE(list.empty());
 }
 
-// TEST(List, PopStart)
-// {
-//     // Arrange
-//     const size_t count = 10;
-//     Linked<size_t> list;
+TEST(List, PopStart)
+{
+    // run_test([](IContainer<int> *list) {});
+    // Arrange
+    const size_t count = 10;
+    Linked<size_t> list;
 
-//     for (size_t i = 0; i < count; ++i)
-//     {
-//         list.push_back(i);
-//     }
+    for (size_t i = 0; i < count; ++i)
+    {
+        list.push_back(i);
+    }
 
-//     // Act
-//     for (size_t i = 0; i < count; ++i)
-//     {
-//         list.erase(i);
-//     }
+    // Act
+    for (size_t i = 0; i < count; ++i)
+    {
+        list.erase(1);
+    }
 
-//     // Assert
-//     ASSERT_EQ(list.size(), 0);
-//     ASSERT_TRUE(list.empty());
-// }
+    // Assert
+    ASSERT_EQ(list.size(), 0);
+    ASSERT_TRUE(list.empty());
+}
 
-// TEST(List, RemoveCenter)
-// {
-//     // Arrange
-//     const size_t count = 2;
-//     Linked<size_t> list;
+TEST(List, RemoveCenter)
+{
+    // run_test([](IContainer<int> *list) {});
+    // Arrange
+    const size_t count = 2;
+    Linked<size_t> list;
 
-//     list.push_back(1);
-//     list.push_back(2);
+    list.push_back(1);
+    list.push_back(2);
 
-//     size_t position = list.size() / 2;
-//     list.insert(position, 1234);
-//     // list.erase(position);
+    size_t position = list.size() / 2;
+    list.insert(position, 1234);
+    list.erase(position);
 
-//     // Assert
-//     ASSERT_EQ(list.size(), count);
-//     ASSERT_FALSE(list.empty());
-// }
+    // Assert
+    ASSERT_EQ(list.size(), count);
+    ASSERT_FALSE(list.empty());
+}
+
+TEST(List, GetVal)
+{
+    // run_test([](IContainer<int> *list) {});
+    const size_t val = 1;
+    Linked<size_t> list;
+
+    list.push_back(val);
+
+    ASSERT_EQ(list[0], val);
+}
 
 int main(int argc, char **argv)
 {

@@ -109,21 +109,20 @@ TEST(List, PopStart)
 
 TEST(List, RemoveCenter)
 {
-    // run_test([](IContainer<int> *list) {});
-    // Arrange
+    run_test([](IContainer<int> *list)
+             {
     const size_t count = 2;
-    Linked<size_t> list;
 
-    list.push_back(1);
-    list.push_back(2);
+    list->push_back(1);
+    list->push_back(2);
 
-    size_t position = list.size() / 2;
-    list.insert(position, 1234);
-    list.erase(position);
+    size_t position = list->size() / 2;
+    list->insert(position, 1234);
+    list->erase(position);
 
     // Assert
-    ASSERT_EQ(list.size(), count);
-    ASSERT_FALSE(list.empty());
+    ASSERT_EQ(list->size(), count);
+    ASSERT_FALSE(list->empty()); });
 }
 
 TEST(List, GetVal)

@@ -31,30 +31,26 @@ TEST(List, PushBack)
              {
     const size_t count = 10;
 
-    // Act
     for (size_t i = 0; i < count; ++i)
     {
         list->push_back(i);
     }
 
-    // Assert
     ASSERT_EQ(list->size(), count);
     ASSERT_FALSE(list->empty()); });
 }
 
 TEST(List, AddStart)
 {
-    // run_test([](IContainer<int> *list) {});
-    // Arrange
+    run_test([](IContainer<int> *list)
+             {
     const size_t count = 2;
-    Linked<size_t> list;
 
-    list.push_back(1);
-    list.insert(0, 0);
+    list->push_back(1);
+    list->insert(0, 0);
 
-    // Assert
-    ASSERT_EQ(list.size(), count);
-    ASSERT_FALSE(list.empty());
+    ASSERT_EQ(list->size(), count);
+    ASSERT_FALSE(list->empty()); });
 }
 
 TEST(List, AddCenter)

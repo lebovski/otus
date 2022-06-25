@@ -4,9 +4,9 @@ project(06.homework)
 
 add_executable(container
     main.cpp
-	sequence.cpp
-	linked.cpp
-	interface.h
+	src/sequence.hpp
+	src/linked.hpp
+	src/interface.h
 )
 
 set_target_properties(container PROPERTIES

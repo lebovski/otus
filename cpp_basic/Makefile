@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-check: hw2build hw5build hw8build hw9build
+check: hw2build hw5build hw8build hw9build hw11build
 
 # hw_2 runners
 hw2build:
@@ -38,6 +38,11 @@ hw11build:
 	cmake --build ./hw_11/build && \
 	./hw_11/build/container
 
+hw13build:
+	cmake -S ./hw_13 -B ./hw_13/build && \
+	cmake --build ./hw_13/build && \
+	./hw_13/build/test_list
+
 lect3build:
 	cmake -S ./lect_3 -B ./lect_3/build && \
 	cmake --build ./lect_3/build
@@ -45,3 +50,7 @@ lect3build:
 lect4build:
 	cmake -S ./lect_4 -B ./lect_4/build && \
 	cmake --build ./lect_4/build
+
+lect13build:
+	cmake -S ./lect_13/project_prebuilt_gtest -B ./lect_13/project_prebuilt_gtest/build && \
+	cmake --build ./lect_13/project_prebuilt_gtest/build

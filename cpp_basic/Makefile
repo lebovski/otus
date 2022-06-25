@@ -45,3 +45,7 @@ lect3build:
 lect4build:
 	cmake -S ./lect_4 -B ./lect_4/build && \
 	cmake --build ./lect_4/build
+
+lect13build:
+	cmake -S ./lect_13/project_prebuilt_gtest -B ./lect_13/project_prebuilt_gtest/build && \
+	cmake --build ./lect_13/project_prebuilt_gtest/build

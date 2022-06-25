@@ -1,7 +1,7 @@
 #include <iostream>
-#include "sequence.cpp"
-#include "linked.cpp"
-#include "interface.h"
+#include "src/sequence.hpp"
+#include "src/linked.hpp"
+#include "src/interface.h"
 
 void print_all(IContainer<int> *seq)
 {

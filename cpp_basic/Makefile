@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-check: hw2build hw5build hw8build hw9build
+check: hw2build hw5build hw8build hw9build hw11build
 
 # hw_2 runners
 hw2build:

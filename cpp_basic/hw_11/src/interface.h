@@ -15,4 +15,5 @@ public:
     virtual T operator[](int index) = 0;
     virtual std::string name() = 0;
     virtual bool empty() = 0;
+    virtual void pop_back() = 0;
 };

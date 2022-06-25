@@ -56,6 +56,8 @@ public:
         m_size -= 1;
     }
 
+    void pop_back() { erase(m_size); }
+
     int size() override { return m_size; }
 
     T operator[](int index) override { return m_region[index]; }

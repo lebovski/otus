@@ -14,7 +14,7 @@ template <class T>
 class Linked : public IContainer<T>
 {
 public:
-    Linked() : m_size{0}, m_last{nullptr} {}
+    Linked() : m_last{nullptr}, m_size{0} {}
 
     void push_back(T value) override
     {

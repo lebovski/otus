@@ -1,0 +1,3 @@
+/home/alx/github/otus/cpp_basic/hw_13/CMakeFiles/test_list.dir
+/home/alx/github/otus/cpp_basic/hw_13/CMakeFiles/edit_cache.dir
+/home/alx/github/otus/cpp_basic/hw_13/CMakeFiles/rebuild_cache.dir

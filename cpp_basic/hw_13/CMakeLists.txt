@@ -1,6 +1,12 @@
-cmake_minimum_required(VERSION 3.2)
-
+cmake_minimum_required(VERSION 3.16)
 project(ProjestWithGTest)
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+FetchContent_MakeAvailable(googletest)
 
 # Lookup for pre-built gtest
 find_package(GTest)
@@ -19,6 +25,7 @@ target_include_directories(
     test_list PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/src"
 )
+
 # Add googletest to the include directories for the test target
 target_include_directories(
     test_list PRIVATE
@@ -28,7 +35,7 @@ target_include_directories(
 # Link test target against gtest libraries
 target_link_libraries(
     test_list PRIVATE
-    ${GTEST_BOTH_LIBRARIES}
+    GTest::gtest_main
 )
 
 if (MSVC)

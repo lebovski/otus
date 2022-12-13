@@ -91,7 +91,8 @@ public:
         }
 
         m_size -= 1;
-        if (m_size == 0) {
+        if (m_size == 0)
+        {
             m_last = nullptr;
         }
     }

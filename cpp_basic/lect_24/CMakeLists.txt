@@ -23,6 +23,7 @@ foreach(target ${TARGETS})
             -Werror
             -Wno-unused-parameter
             -pedantic
+            # -fsanitize=thread
         )
         target_link_libraries(${target} PUBLIC Threads::Threads)
     elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")

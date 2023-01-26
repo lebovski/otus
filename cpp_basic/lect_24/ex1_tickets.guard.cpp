@@ -22,10 +22,12 @@ void usefull_work() {
 void cacher(int &tickets_left, std::mutex &mtx) {
   for (;;) {
     {
-      std::lock_guard lock(mtx);
-      if (tickets_left == 0) {
+      const std::lock_guard lock(mtx);
+      if (tickets_left <= 0) {
         break;
       }
+      std::cout << tickets_left << std::endl;
+
       usefull_work();
       --tickets_left;
     }

@@ -67,5 +67,4 @@
         "cinttypes": "cpp",
         "future": "cpp"
     },
-    "cmake.configureOnOpen": false
 }

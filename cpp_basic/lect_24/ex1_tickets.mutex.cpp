@@ -19,13 +19,34 @@ void usefull_work() {
   std::this_thread::sleep_for(dist(gen) * 1s);
 }
 
+// Recursive lock!
+// void update_book(const std::string_view &op_name, std::recursive_mutex &rmtx)
+// {
+//   rmtx.lock();
+//   // ...
+//   rmtx.unlock();
+// }
+
 void cacher(int &tickets_left, std::mutex &mtx) {
   for (;;) {
-    if (tickets_left == 0) {
-      break;
-    }
     usefull_work();
-    --tickets_left;
+
+    mtx.lock();
+    try {
+      if (tickets_left == 0) {
+        mtx.unlock();
+        break;
+      }
+
+      // Lock inner
+      // update_book("123", mtx);
+      --tickets_left;
+    } catch (...) {
+      mtx.unlock();
+      throw;
+    }
+
+    mtx.unlock();
     usefull_work();
   }
 }

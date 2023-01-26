@@ -16,30 +16,32 @@ const std::chrono::seconds work_time(5);
 
 class sync_account {
 public:
-  sync_account(int initial_balance) : balance_{initial_balance} {}
+  explicit sync_account(const int initial_balance) : balance_{initial_balance} {}
 
   sync_account(const sync_account &oth) {
-    std::lock_guard lock{oth.mutex_};
+    const std::lock_guard lock{oth.mutex_};
     balance_ = oth.balance_;
   }
 
   sync_account(sync_account &&oth) { balance_ = oth.balance_; }
 
+  ~sync_account() = default;
+
   sync_account &operator=(const sync_account &oth) {
     sync_account tmp{oth};
-    std::lock_guard lock{mutex_};
+    const  std::lock_guard lock{mutex_};
     std::swap(*this, tmp);
     return *this;
   }
 
   sync_account &operator=(sync_account &&oth) {
-    std::lock_guard lock{mutex_};
+    const std::lock_guard lock{mutex_};
     balance_ = oth.balance_;
     return *this;
   }
 
   bool withdraw(int amount) {
-    std::lock_guard lock{mutex_};
+    const std::lock_guard lock{mutex_};
     if (amount > balance_)
       return false;
     balance_ -= amount;
@@ -47,14 +49,14 @@ public:
   }
 
   bool deposit(int amount) {
-    std::lock_guard lock{mutex_};
+    const std::lock_guard lock{mutex_};
     balance_ += amount;
     return true;
   }
 
   friend bool transaction(sync_account &from, sync_account &to, int amount) {
-    std::lock_guard lock_from{from.mutex_};
-    std::lock_guard lock_to{to.mutex_};
+    const std::lock_guard lock_from{from.mutex_};
+    const std::lock_guard lock_to{to.mutex_};
     if (amount > from.balance_) {
       return false;
     }
@@ -65,7 +67,7 @@ public:
   }
 
   int balance() const {
-    std::lock_guard lock{mutex_};
+    const std::lock_guard lock{mutex_};
     return balance_;
   }
 

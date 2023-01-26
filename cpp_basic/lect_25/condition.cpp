@@ -1,6 +1,7 @@
-#include <thread>
-#include <mutex>
 #include <condition_variable>
+#include <mutex>
+#include <thread>
+
 
 #include <iostream>
 
@@ -11,47 +12,41 @@ bool notificated = false;
 int global = 0;
 
 void example() {
+  std::thread thr1{[]() {
+    while (true) {
+      std::unique_lock<std::mutex> lck{mutex};
+      std::cout << "Before waiting!" << std::endl;
 
-	std::thread thr1{
-		[]() {
-			while(true) {
-				std::unique_lock<std::mutex> lck{mutex};
-				std::cout << "Before waiting!" << std::endl;
+      // guarded suspension
+      // spurious invocation
+      while (!notificated)
+        condition_variable.wait(lck);
 
-				// guarded suspension
-				// spurious invocation
-				while(!notificated) condition_variable.wait(lck);
+      // condition_variable.wait(lck,
+      // 	[&notificated](){ return notificated; }
+      // );
 
-				// condition_variable.wait(lck,
-				// 	[&notificated](){ return notificated; }
-				// );
+      std::cout << "After waiting!" << std::endl;
+    }
+  }};
 
-				std::cout << "After waiting!" << std::endl;
-			}
-		}
-	};
+  std::thread thr2{[]() {
+    std::unique_lock<std::mutex> lck{mutex};
 
-	std::thread thr2 {
-		[]() {
-			std::unique_lock<std::mutex> lck{mutex};
+    std::cout << "Before wake up" << std::endl;
 
-			std::cout << "Before wake up" << std::endl;
+    condition_variable.notify_one(); // .....
+    notificated = true;
 
-			condition_variable.notify_one(); // .....
-			notificated = true;
+    std::cout << "After wake up" << std::endl;
+  }};
 
-			std::cout << "After wake up" << std::endl;
-		}
-	};
-
-	thr1.join();
-	thr2.join();
-
+  thr1.join();
+  thr2.join();
 }
 
 int main() {
+  example();
 
-	example();
-
-	return 0;
+  return 0;
 }

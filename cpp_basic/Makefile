@@ -49,7 +49,8 @@ hw27build:
 	cmake --build ./hw_27/build
 
 hw27run: hw27build
-	time ./hw_27/build/topk_words ~/Downloads/64317-0.txt
+	./hw_27/build/topk_words ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt
+	./hw_27/build/topk_words_original ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt ~/Downloads/64317-0.txt
 
 lect3build:
 	cmake -S ./lect_3 -B ./lect_3/build && \

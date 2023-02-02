@@ -43,6 +43,14 @@ hw13build:
 	cmake --build ./hw_13/build && \
 	./hw_13/build/test_list
 
+# hw_27 runners
+hw27build:
+	cmake -S ./hw_27 -B ./hw_27/build && \
+	cmake --build ./hw_27/build
+
+hw27run: hw27build
+	time ./hw_27/build/topk_words ~/Downloads/64317-0.txt
+
 lect3build:
 	cmake -S ./lect_3 -B ./lect_3/build && \
 	cmake --build ./lect_3/build

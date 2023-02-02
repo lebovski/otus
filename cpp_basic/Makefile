@@ -62,3 +62,7 @@ lect22build:
 lect23build:
 	cmake -S ./lect_23 -B ./lect_23/build && \
 	cmake --build ./lect_23/build
+
+lect24build:
+	cmake -S ./lect_24 -B ./lect_24/build && \
+	cmake --build ./lect_24/build

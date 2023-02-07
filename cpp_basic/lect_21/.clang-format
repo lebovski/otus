@@ -1,0 +1,25 @@
+BasedOnStyle: Google
+
+BinPackParameters: false
+
+IncludeCategories:
+  - Regex: '^"prec\.h(pp)?"$'
+    Priority: -2
+
+  - Regex: "^<boost/.+>"
+    Priority: 351
+
+  - Regex: '^"(.+/)?fwd\.h(pp)?"$'
+    Priority: 199
+
+  - Regex: '^".+"$'
+    Priority: 191
+
+  - Regex: '^<[^.]+\.h[p]*>$'
+    Priority: 401
+
+  - Regex: "^<[^.]+>$"
+    Priority: 499
+
+IncludeIsMainRegex: "$"
+Standard: c++17

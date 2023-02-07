@@ -2,6 +2,7 @@
 #include "src/sequence.hpp"
 #include "src/linked.hpp"
 #include "src/interface.h"
+#include <memory>
 
 void print_all(IContainer<int> *seq)
 {
@@ -20,11 +21,12 @@ void print_all(IContainer<int> *seq)
 int main()
 {
     IContainer<int> *containers[2];
-    Linked<int> linked;
-    Sequence<int> sequence;
 
-    containers[0] = &linked;
-    containers[1] = &sequence;
+    auto linked = std::make_unique<Linked<int>>();
+    auto sequence = std::make_unique<Sequence<int>>();
+
+    containers[0] = linked.get();
+    containers[1] = sequence.get();
 
     for (int i = 0; i < 2; i++)
     {

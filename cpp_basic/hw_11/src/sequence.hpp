@@ -6,6 +6,11 @@ template <class T> class Sequence : public IContainer<T> {
 public:
   Sequence() : m_region{nullptr}, m_size{0} {}
 
+  ~Sequence() {
+    delete[] m_region;
+    m_size = 0;
+  }
+
   void push_back(const T &value) override { insert(m_size, value); }
 
   void insert(int position, const T &value) override {

@@ -12,6 +12,19 @@ template <class T> class Linked : public IContainer<T> {
 public:
   Linked() : m_last{nullptr}, m_size{0} {}
 
+  ~Linked() {
+    Node<T> *prev = m_last;
+
+    while (prev) {
+      Node<T> *clearNode = prev;
+      prev = prev->prev;
+
+      delete clearNode;
+    }
+
+    m_size = 0;
+  }
+
   void push_back(const T &value) override {
     Node<T> *new_node = new Node<T>{};
 

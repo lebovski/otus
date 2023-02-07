@@ -20,9 +20,11 @@ void print_all(IContainer<int> *seq)
 int main()
 {
     IContainer<int> *containers[2];
+    Linked<int> linked;
+    Sequence<int> sequence;
 
-    containers[0] = new Linked<int>{};
-    containers[1] = new Sequence<int>{};
+    containers[0] = &linked;
+    containers[1] = &sequence;
 
     for (int i = 0; i < 2; i++)
     {

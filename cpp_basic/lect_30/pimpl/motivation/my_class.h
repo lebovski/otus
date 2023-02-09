@@ -1,13 +1,12 @@
 #pragma once
 
+#include <cstddef>
 #include <fstream>
 #include <iostream>
 #include <list>
 #include <mutex>
 #include <string>
 #include <vector>
-
-#include <cstddef>
 
 namespace my {
 struct my_class {

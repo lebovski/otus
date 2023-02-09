@@ -6,8 +6,7 @@
 #include "my_class.h"
 
 int main() {
+  my::my_class cls{"test_file.txt"};
 
-	my::my_class cls{"test_file.txt"};
-
-	return 0;
+  return 0;
 }
